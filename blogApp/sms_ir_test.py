@@ -4,7 +4,7 @@ from random import randint
 
 # SMS IR CONFIG
 sms_ir = SmsIr(
-    api_key="8Ca4PBnyrDH6t9mQapjjB8eFsU8z6iBxEg0ExI33uaJl6hnlfyvePAKzSwd7XDkt",
+    api_key="",
     linenumber=30007732011199
 )
 
