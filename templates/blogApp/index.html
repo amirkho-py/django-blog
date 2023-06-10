@@ -1,0 +1,58 @@
+{% extends 'blogApp/base.html' %}
+
+
+{% block mainContent %}
+
+
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+
+
+            {% for post in data %}
+
+            <!-- Post preview-->
+            <div class="post-preview">
+                <a href="{% url 'blogApp:detail' post.id %}">
+                    <h2 class="post-title">{{post.title}}</h2>
+                    {% load editorjs %}
+                    <h3 class="post-subtitle">{{post.description|editorjs|truncatewords:2}}</h3>
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <a href="#">{{post.author}}</a>
+                    {{post.published_date}}
+                </p>
+            </div>
+
+            <!-- Divider-->
+            <hr class="my-4" />
+            {% endfor %}
+
+
+
+            
+           
+            
+          
+
+            <!-- Pager-->
+
+            {% if data.has_previous %}
+            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="?page={{data.previous_page_number}}">← New Posts </a></div>
+            {% endif %}
+
+            {% if data.has_next %}
+            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="?page={{data.next_page_number}}">Older Posts →</a></div>
+            {% endif %}
+
+            
+
+
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock mainContent %}
